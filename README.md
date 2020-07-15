@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 It represent an application dedicated to trainers, they can add their type of excercises and generate random a full session of them.
 
 ## Development server
+Th app is deployed on firebase and also the database is on Firebase 
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
