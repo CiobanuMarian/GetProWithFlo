@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {AngularFireModule} from '@angular/fire';
-import {AngularFireDatabaseModule} from '@Angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './login/login.component';
 import { MatTableModule, MatButtonModule, MatFormField, MatGridListModule, MatDatepickerModule, MatSelectModule, MatInputModule, MatNativeDateModule, MatIconModule, MatPaginatorModule, MatMenuModule, MatSortModule } from '@angular/material';
@@ -15,7 +13,7 @@ import { ReactiveFormsModule, FormsModule, NgForm } from '@angular/forms';
 import {MatCardModule, MatCard} from '@angular/material/card';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
 ];
 @NgModule({
   declarations: [
@@ -25,8 +23,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
+    // AngularFireModule.initializeApp(environment.firebase,'Get Pro With Flo'),
+    // AngularFireDatabaseModule,
     AppRoutingModule,
     BrowserModule,
     AppRoutingModule,

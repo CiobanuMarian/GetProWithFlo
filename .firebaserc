@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "angulardeploy-77e35"
+  },
+  "targets": {
+    "angulardeploy-77e35": {
+      "hosting": {
+        "getProWithFlo": [
+          "angulardeploy-77e35"
+        ]
+      }
+    }
   }
 }
