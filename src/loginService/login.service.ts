@@ -41,17 +41,8 @@ export class LoginService {
       })
    }
 
-  //  inserrtUserData(userCredentials: firebase.auth.UserCredential) {
-  //    return this.db.
-  //  }
-
-   getExcercises(){
-     console.log()
-     this.usersList = this.db.list('exercises');
-     console.log(this.usersList);
+   getUser(){
+     return this.afAuth.authState;
    }
 
-
-
-  
 }

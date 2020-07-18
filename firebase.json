@@ -4,6 +4,7 @@
   },
   "hosting": [
     {
+      "target" : "getProWithFlo",
       "public": "dist/getProWithFlo",
       "ignore": [
         "firebase.json",
