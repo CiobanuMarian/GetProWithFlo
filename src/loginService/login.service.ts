@@ -1,9 +1,57 @@
 import { Injectable } from '@angular/core';
+import { User } from 'src/app/login/user';
+import {AngularFireDatabase, AngularFireList} from '@angular/fire/database'
+import { HttpClientModule} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
+  newUser : User;
+  usersList : AngularFireList<any>;
+
+  constructor(private db : AngularFireDatabase,
+    private afAuth: AngularFireAuth,
+    private router : Router ) {
+   }
+
+
+   login(email : string, password: string) {
+     this.afAuth.signInWithEmailAndPassword(email,password)
+     .then(userCredential => {
+       if(userCredential) {
+         this.router.navigate(['/home']);
+       }
+     })
+   }
+
+   createUser(user: User) {
+     console.log("Creating user:" + user.email + user.password);
+     this.afAuth.createUserWithEmailAndPassword( user.email, user.password)
+      .then(userCredentials => {
+        this.newUser = user;
+
+        userCredentials.user.updateProfile({
+          displayName: user.firstName + ' ' + user.lastName
+        });
+      })
+   }
+
+  //  inserrtUserData(userCredentials: firebase.auth.UserCredential) {
+  //    return this.db.
+  //  }
+
+   getExcercises(){
+     console.log()
+     this.usersList = this.db.list('exercises');
+     console.log(this.usersList);
+   }
+
+
+
+  
 }

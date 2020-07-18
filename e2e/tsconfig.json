@@ -1,6 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "skipLibCheck": true,
     "outDir": "../out-tsc/e2e",
     "module": "commonjs",
     "target": "es5",
@@ -9,6 +10,5 @@
       "jasminewd2",
       "node"
     ],
-    "skipLibCheck": true,
   }
 }

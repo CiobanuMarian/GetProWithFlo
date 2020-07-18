@@ -7,20 +7,29 @@ import { environment } from 'src/environments/environment';
 import { LoginComponent } from './login/login.component';
 import { MatTableModule, MatButtonModule, MatFormField, MatGridListModule, MatDatepickerModule, MatSelectModule, MatInputModule, MatNativeDateModule, MatIconModule, MatPaginatorModule, MatMenuModule, MatSortModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule, FormsModule, NgForm } from '@angular/forms';
 import {MatCardModule, MatCard} from '@angular/material/card';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'home', component: HomeComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'my-app-name'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     BrowserModule,
     AppRoutingModule,
     AppRoutingModule,
