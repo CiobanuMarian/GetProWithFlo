@@ -17,18 +17,21 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { HomeComponent } from './home/home.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { RegisterComponent } from './register/register.component';
+import { AddExerciseComponent } from './add-exercise/add-exercise.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'add', component: AddExerciseComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddExerciseComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

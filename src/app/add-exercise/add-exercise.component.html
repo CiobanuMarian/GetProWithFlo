@@ -1,0 +1,64 @@
+
+
+
+<!-- <p>Welcome {{user?.displayName}}</p> -->
+
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+      <h1></h1>
+      <span class="menu-spacer"></span>
+      <div>
+          Get Pro With Flo
+      </div>
+     
+    </mat-toolbar-row>
+  
+    <!-- <mat-toolbar-row>
+        <span style="font-size: 12px;"></span>
+      </mat-toolbar-row> -->
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a mat-list-item><mat-icon aria-hidden="false">account_circle</mat-icon> {{user?.displayName}} </a>
+        <a mat-list-item [routerLink]="'/addExercise'"><mat-icon aria-hidden="false">add</mat-icon> Add Exercise </a>
+        <a mat-list-item [routerLink]="'/editExercise'"><mat-icon aria-hidden="false">edit</mat-icon> Edit Exercise </a>
+        <a mat-list-item [routerLink]="'/deleteExcercises'"><mat-icon aria-hidden="false">delete</mat-icon> Delete excercises </a>
+        <a mat-list-item (click)= "logOut()"> <mat-icon aria-hidden="false">exit_to_app</mat-icon> Log out </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <br/><br/><h1 style="text-align:center;
+        display: flex;
+        justify-content: center;">Add exercise</h1><br/><br/>
+        <div mat-dialog-content>
+        <mat-form-field appearance="fill" style="text-align:center;
+        display: flex;
+        justify-content: center;">
+            <mat-label>Exercise type</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let exercise of exercises" [value]="exercise.value">
+                    {{exercise.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br/>
+        <mat-form-field style="text-align:center;
+        display: flex;
+        justify-content: center;">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="" ></textarea>
+        </mat-form-field>
+        <br><br>
+        </div>
+        
+        <div mat-dialog-actions>
+            <button style="left: 48%;" mat-button (click)="cancel()">Cancel</button>
+            <button style="left: 48%;" mat-button (click)="addEx()">Add</button>
+        </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
