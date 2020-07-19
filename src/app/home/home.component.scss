@@ -1,0 +1,26 @@
+.home_content{
+    height: 100%;
+}
+.home_intro {
+    font: 1em comic-sans;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+}
+.checkbox { 
+    margin-top: 10px;
+    text-align:center;
+    display: flex;
+    justify-content: center;
+}
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
+    margin: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.mat-dialog-container {
+    display: contents;
+   
+}

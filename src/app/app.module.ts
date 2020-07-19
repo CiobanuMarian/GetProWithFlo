@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './login/login.component';
-import { MatTableModule, MatButtonModule, MatFormField, MatGridListModule, MatDatepickerModule, MatSelectModule, MatInputModule, MatNativeDateModule, MatIconModule, MatPaginatorModule, MatMenuModule, MatSortModule, MatListModule, MatToolbarModule } from '@angular/material';
+import { MatTableModule, MatButtonModule, MatFormField, MatGridListModule, MatDatepickerModule, MatSelectModule, MatInputModule, MatNativeDateModule, MatIconModule, MatPaginatorModule, MatMenuModule, MatSortModule, MatListModule, MatToolbarModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -16,16 +16,19 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { HomeComponent } from './home/home.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent}
+  { path: 'home', component: HomeComponent},
+  { path: 'register', component: RegisterComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -58,6 +61,8 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule,
     MatIconModule,
     RouterModule.forRoot(
       routes)

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/login/user';
-import {AngularFireDatabase, AngularFireList} from '@angular/fire/database'
-import { HttpClientModule} from '@angular/common/http';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
+import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -11,27 +11,28 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
-  newUser : User;
-  usersList : AngularFireList<any>;
+  newUser: User;
+  usersList: AngularFireList<any>;
 
-  constructor(private db : AngularFireDatabase,
+  constructor(private db: AngularFireDatabase,
     private afAuth: AngularFireAuth,
-    private router : Router ) {
-   }
+    private router: Router) {
+  }
 
 
-   login(email : string, password: string) {
-     this.afAuth.signInWithEmailAndPassword(email,password)
-     .then(userCredential => {
-       if(userCredential) {
-         this.router.navigate(['/home']);
-       }
-     })
-   }
+  login(email: string, password: string) {
+    this.afAuth.signInWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        if (userCredential) {
+          this.router.navigate(['/home']);
+        }
+      })
+  }
 
-   createUser(user: User) {
-     console.log("Creating user:" + user.email + user.password);
-     this.afAuth.createUserWithEmailAndPassword( user.email, user.password)
+
+  createUser(user: User) {
+    console.log("Creating user:" + user.email + user.password);
+    this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
       .then(userCredentials => {
         this.newUser = user;
 
@@ -39,10 +40,16 @@ export class LoginService {
           displayName: user.firstName + ' ' + user.lastName
         });
       })
-   }
+  }
 
-   getUser(){
-     return this.afAuth.authState;
-   }
+  // checkEmail(email: string): boolean {
+  //   try {
+  //     this.afAuth.createUserWithEmailAndPassword(email, 'noPassowrd')
+  //   } catch(E)
+
+  //  }
+  getUser() {
+    return this.afAuth.authState;
+  }
 
 }

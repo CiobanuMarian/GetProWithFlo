@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
-import { env } from 'process';
-import { User } from '../login/user';
-import { Observable } from 'rxjs';
 import { LoginService } from 'src/loginService/login.service';
+import { exerciseType } from './exercisesType';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +13,17 @@ import { LoginService } from 'src/loginService/login.service';
 export class HomeComponent implements OnInit {
 
   user: firebase.User;
+  exerciseType:exerciseType.Stretching;
+  exerciseTypes =[
+    {name: "Aerobic"},
+    {name: "Balance"},
+    {name: "Strength"},
+    {name: "Stretching"}
+  ]
+  
   constructor(private afAuth: AngularFireAuth, private router: Router, private loginService: LoginService) {
   }
-
+ 
   ngOnInit() {
     this.loginService.getUser().subscribe(user => {
       if (user == null) {
@@ -27,25 +32,14 @@ export class HomeComponent implements OnInit {
         this.user = user;
       }
     })
-
   }
 
-  check(): Observable<User> {
-    if (firebase.apps.length === 0) {
-      firebase.initializeApp(environment.firebaseConfig);
-    }
-    const userDetails = new Observable<User>();
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        this.userName = user.displayName;
-        this.email = user.email;
-      } else {
-        this.router.navigateByUrl('');
-      }
+  logOut(){
+    firebase.auth().signOut().then(function() {
+      this.router.navigateByUrl('');
+    }).catch(function(error) {
+      // An error happened.
     });
-    return userDetails;
   }
-
-
 
 }
