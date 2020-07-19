@@ -1,17 +1,19 @@
 <h1 mat-dialog-title>Create Account</h1>
 <div mat-dialog-content>
-    <mat-form-field>
-        <input matInput placeholder="First Name" [(ngModel)]="user.firstName" name="firstName" required>
+    <span class="error" *ngIf="error" style="color: red;">Error:{{error}}</span>
+    
+    <mat-form-field style="margin-top: 15px;">
+        <input matInput placeholder="First Name" [(ngModel)]="user.firstName" name="firstName" required >
     </mat-form-field>
-
+    
     <mat-form-field>
         <input matInput placeholder="Last Name" [(ngModel)]="user.lastName" name="lastName" required>
     </mat-form-field>
-
+    
     <mat-form-field>
         <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" required>
     </mat-form-field>
-
+    
     <mat-form-field id="password">
         <input matInput placeholder="Password" [(ngModel)]="user.password" type="password" name="password" required>
     </mat-form-field>

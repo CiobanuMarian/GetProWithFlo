@@ -30,24 +30,22 @@ export class LoginService {
   }
 
 
-  createUser(user: User) {
-    console.log("Creating user:" + user.email + user.password);
-    this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
-      .then(userCredentials => {
-        this.newUser = user;
+  // createUser(user: User){
+  //   console.log("Creating user:" + user.email + user.password);
+  //   this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
+  //     .then(userCredentials => {
+  //       this.newUser = user;
 
-        userCredentials.user.updateProfile({
-          displayName: user.firstName + ' ' + user.lastName
-        });
-      })
-  }
+  //       userCredentials.user.updateProfile({
+  //         displayName: user.firstName + ' ' + user.lastName
+  //       }
+  //       )
+  //     })
+  //     .catch( (err)=> user.error = err.message);
 
-  // checkEmail(email: string): boolean {
-  //   try {
-  //     this.afAuth.createUserWithEmailAndPassword(email, 'noPassowrd')
-  //   } catch(E)
+     
+  // }
 
-  //  }
   getUser() {
     return this.afAuth.authState;
   }

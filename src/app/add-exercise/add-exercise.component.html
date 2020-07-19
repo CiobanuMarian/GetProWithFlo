@@ -1,8 +1,3 @@
-
-
-
-<!-- <p>Welcome {{user?.displayName}}</p> -->
-
 <mat-toolbar color="primary">
     <mat-toolbar-row>
       <button mat-icon-button>
@@ -15,23 +10,21 @@
       </div>
      
     </mat-toolbar-row>
-  
-    <!-- <mat-toolbar-row>
-        <span style="font-size: 12px;"></span>
-      </mat-toolbar-row> -->
   </mat-toolbar>
 
   <mat-sidenav-container>
     <mat-sidenav #sidenav>
       <mat-nav-list>
-        <a mat-list-item><mat-icon aria-hidden="false">account_circle</mat-icon> {{user?.displayName}} </a>
-        <a mat-list-item [routerLink]="'/addExercise'"><mat-icon aria-hidden="false">add</mat-icon> Add Exercise </a>
+        <a mat-list-item ><mat-icon aria-hidden="false">account_circle</mat-icon> {{user?.displayName}} </a>
+        <a mat-list-item [routerLink]="'/home'"><mat-icon aria-hidden="false">home</mat-icon> Home </a>
+        <a mat-list-item [routerLink]="'/add'"><mat-icon aria-hidden="false">add</mat-icon> Add Exercise </a>
         <a mat-list-item [routerLink]="'/editExercise'"><mat-icon aria-hidden="false">edit</mat-icon> Edit Exercise </a>
         <a mat-list-item [routerLink]="'/deleteExcercises'"><mat-icon aria-hidden="false">delete</mat-icon> Delete excercises </a>
         <a mat-list-item (click)= "logOut()"> <mat-icon aria-hidden="false">exit_to_app</mat-icon> Log out </a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
+      <div style="height: 93vh;">
         <br/><br/><h1 style="text-align:center;
         display: flex;
         justify-content: center;">Add exercise</h1><br/><br/>
@@ -59,6 +52,7 @@
         <div mat-dialog-actions>
             <button style="left: 48%;" mat-button (click)="cancel()">Cancel</button>
             <button style="left: 48%;" mat-button (click)="addEx()">Add</button>
+        </div>
         </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

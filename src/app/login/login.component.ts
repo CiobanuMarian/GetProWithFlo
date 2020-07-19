@@ -23,15 +23,6 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.email, this.password);
   }
 
-  register() {
-    const registerUser = new User();
-    registerUser.firstName = 'Marian'
-    registerUser.lastName = 'Ciobanu'
-    registerUser.email = 'MarianCiobanu@ceva.com'
-    registerUser.password = 'parolaMarian'
-    this.loginService.createUser(registerUser);
-  }
-
   openRegisterDialog(): void {
     const dialogRef = this.dialog.open(RegisterComponent, {
       width: "300px"

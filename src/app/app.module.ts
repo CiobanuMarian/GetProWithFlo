@@ -31,7 +31,7 @@ const routes: Routes = [
     LoginComponent,
     HomeComponent,
     RegisterComponent,
-    AddExerciseComponent
+    AddExerciseComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
