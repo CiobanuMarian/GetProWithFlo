@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class LoginService {
 
   constructor(private db: AngularFireDatabase,
     private afAuth: AngularFireAuth,
-    private router: Router) {
+    private router: Router,
+    private firestore: AngularFirestore) {
   }
 
 
@@ -49,5 +51,11 @@ export class LoginService {
   getUser() {
     return this.afAuth.authState;
   }
+
+
+  createExercise(exercise) {
+    console.log(exercise);
+    this.firestore.collection('exercises').add(exercise);
+}
 
 }

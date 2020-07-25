@@ -1,52 +1,61 @@
-
 <!-- <p>Welcome {{user?.displayName}}</p> -->
 
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <button mat-icon-button>
-        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-      </button>
-      <h1></h1>
-      <span class="menu-spacer"></span>
-      <div>
-          Get Pro With Flo
-      </div>
-     
-    </mat-toolbar-row>
-  
-    <!-- <mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1></h1>
+    <span class="menu-spacer"></span>
+    <div>
+      Get Pro With Flo
+    </div>
+
+  </mat-toolbar-row>
+
+  <!-- <mat-toolbar-row>
         <span style="font-size: 12px;"></span>
       </mat-toolbar-row> -->
-  </mat-toolbar>
+</mat-toolbar>
 
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav>
-      <mat-nav-list>
-        <a mat-list-item ><mat-icon aria-hidden="false">account_circle</mat-icon> {{user?.displayName}} </a>
-        <a mat-list-item [routerLink]="'/home'"><mat-icon aria-hidden="false">home</mat-icon> Home </a>
-        <a mat-list-item [routerLink]="'/add'"><mat-icon aria-hidden="false">add</mat-icon> Add Exercise </a>
-        <a mat-list-item [routerLink]="'/editExercise'"><mat-icon aria-hidden="false">edit</mat-icon> Edit Exercise </a>
-        <a mat-list-item [routerLink]="'/deleteExcercises'"><mat-icon aria-hidden="false">delete</mat-icon> Delete excercises </a>
-        <a mat-list-item (click)= "logOut()"> <mat-icon aria-hidden="false">exit_to_app</mat-icon> Log out </a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div style="height: 88vh;">
-        <mat-card class="home_intro">
-          Welcome, please select what types of exercises would you like to have in your training
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a mat-list-item>
+        <mat-icon aria-hidden="false">account_circle</mat-icon> {{user?.displayName}}
+      </a>
+      <a mat-list-item [routerLink]="'/home'">
+        <mat-icon aria-hidden="false">home</mat-icon> Home
+      </a>
+      <a mat-list-item [routerLink]="'/add'">
+        <mat-icon aria-hidden="false">add</mat-icon> Add Exercise
+      </a>
+      <a mat-list-item [routerLink]="'/edit'">
+        <mat-icon aria-hidden="false">edit</mat-icon> Edit Exercise
+      </a>
+      <a mat-list-item [routerLink]="'/delete'">
+        <mat-icon aria-hidden="false">delete</mat-icon> Delete excercises
+      </a>
+      <a mat-list-item (click)="logOut()">
+        <mat-icon aria-hidden="false">exit_to_app</mat-icon> Log out
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <mat-card class="home_intro">
+        Welcome, please select what types of exercises would you like to have in your training
       </mat-card>
-  
-        <label *ngFor="let exercise of exerciseTypes">
-          <section>
-            <mat-checkbox labelPosition="before" color="primary" class="checkbox">{{exercise.name}}</mat-checkbox>
-          </section>
-        </label>
-  
-        <button mat-fab color="primary" class="start_button">
-          <mat-icon>play_arrow</mat-icon>
-        </button>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
 
+      <label *ngFor="let exercise of exerciseTypes">
+        <section>
+          <mat-checkbox labelPosition="before" color="primary" class="checkbox">{{exercise.name}}</mat-checkbox>
+        </section>
+      </label>
 
+      <button mat-fab color="primary" class="start_button">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

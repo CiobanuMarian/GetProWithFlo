@@ -1,0 +1,55 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+        <h1></h1>
+        <span class="menu-spacer"></span>
+        <div>
+            Get Pro With Flo
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+            <a mat-list-item>
+                <mat-icon aria-hidden="false">account_circle</mat-icon> {{user?.displayName}}
+            </a>
+            <a mat-list-item [routerLink]="'/home'">
+                <mat-icon aria-hidden="false">home</mat-icon> Home
+            </a>
+            <a mat-list-item [routerLink]="'/add'">
+                <mat-icon aria-hidden="false">add</mat-icon> Add Exercise
+            </a>
+            <a mat-list-item [routerLink]="'/edit'">
+                <mat-icon aria-hidden="false">edit</mat-icon> Edit Exercise
+            </a>
+            <a mat-list-item [routerLink]="'/delete'">
+                <mat-icon aria-hidden="false">delete</mat-icon> Delete excercises
+            </a>
+            <a mat-list-item (click)="logOut()">
+                <mat-icon aria-hidden="false">exit_to_app</mat-icon> Log out
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 88vh;">
+            <mat-card *ngFor="let item of exercise" class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        Description: {{item.description}}
+                    </div>
+                    <div class="card-subtitle">
+                        Type: {{item.type}}
+                    </div>
+                </div>
+            </mat-card>
+
+        <button mat-fab color="primary" class="save_button" (click)="saveAll()">
+            <mat-icon>save</mat-icon>
+          </button>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

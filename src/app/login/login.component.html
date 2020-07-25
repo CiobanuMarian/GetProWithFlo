@@ -1,27 +1,22 @@
 <div style="height: 100%; background-image: url(assets/gym_background.jpg); background-position: center;
 background-size: cover;
 background-repeat: no-repeat;">
-    <div mat-dialog-content>
-        <br/><br/><h1 style="text-align:center;
-    display: flex;
-    justify-content: center; ">Log in</h1><br/><br/>
-    <mat-form-field style="text-align:center;
-    display: flex;
-    justify-content: center;">
-        <input style="width: 200px;" matInput placeholder="Email" [(ngModel)]="email" name="email" required>
-    </mat-form-field>
-    <br/>
-    <mat-form-field id = "password" style="text-align:center;
-    display: flex;
-    justify-content: center;">
-        <input matInput placeholder="Password" [(ngModel)]="password" [type]="hide ? 'password' : 'text' " name="password" required>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]=" 'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-        <br><br>
-    
-    </mat-form-field>
-    <button mat-raised-button class="btn-block" style="left: 50%; width: 100px;" mat-button (click)="login()">Log in</button><br/>
-    <button mat-raised-button class="btn-block" style="left: 50%; width: 100px" mat-button (click)="openRegisterDialog()">Register</button>
-    </div>
+<br>
+    <mat-card class="main-div">
+        <div class="login">Log in</div>
+        <mat-form-field class="center">
+            <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+        </mat-form-field>
+        <mat-form-field id="password" class="center">
+            <input matInput placeholder="Password" [(ngModel)]="password" [type]="hide ? 'text' : 'password' "
+                name="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]=" 'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-raised-button class="btn-block" mat-button (click)="login()">Login</button>
+        <button mat-raised-button class="btn-block" mat-button style="margin-left: 5px;"
+            (click)="openRegisterDialog()">Register</button>
+    </mat-card>
 </div>
