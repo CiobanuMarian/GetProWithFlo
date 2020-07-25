@@ -38,34 +38,29 @@
   <mat-sidenav-content>
     <div style="height: 93vh;">
       <br /><br />
-      <h1 style="text-align:center;
-        display: flex;
-        justify-content: center;">Add exercise</h1><br /><br />
+      <h1 class="center">Add exercise</h1><br /><br />
       <div mat-dialog-content>
-        <mat-form-field appearance="fill" style="text-align:center;
-        display: flex;
-        justify-content: center;">
+        <mat-form-field appearance="fill" class="center">
           <mat-label>Exercise type</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let exercise of exercises" [value]="exercise.value">
-              {{exercise.viewValue}}
+          <mat-select [(ngModel)]="selectedType">
+            <mat-option *ngFor="let exercise of exercises" [value]="exercise">
+              {{exercise}}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <br />
-        <mat-form-field style="text-align:center;
-        display: flex;
-        justify-content: center;">
+        <mat-form-field class="textarea">
           <mat-label>Description</mat-label>
-          <textarea matInput placeholder="" [(ngModel)]="description"></textarea>
+          <textarea matInput placeholder="" [(ngModel)]="description" rows="10"></textarea>
         </mat-form-field>
         <br><br>
       </div>
 
       <div mat-dialog-actions>
-        <button style="left: 48%;" mat-button (click)="cancel()">Cancel</button>
-        <button style="left: 48%;" mat-button (click)="addExercise()">Add</button>
+        <button style="left: 44%;" mat-button (click)="cancel()">Cancel</button>
+        <button style="left: 44%;" mat-button (click)="addExercise()">Add</button>
       </div>
+      <div *ngIf="showSuccesMsg" class="toast">The exercise was added!</div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

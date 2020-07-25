@@ -31,31 +31,13 @@ export class LoginService {
       })
   }
 
-
-  // createUser(user: User){
-  //   console.log("Creating user:" + user.email + user.password);
-  //   this.afAuth.createUserWithEmailAndPassword(user.email, user.password)
-  //     .then(userCredentials => {
-  //       this.newUser = user;
-
-  //       userCredentials.user.updateProfile({
-  //         displayName: user.firstName + ' ' + user.lastName
-  //       }
-  //       )
-  //     })
-  //     .catch( (err)=> user.error = err.message);
-
-     
-  // }
-
   getUser() {
     return this.afAuth.authState;
   }
 
 
   createExercise(exercise) {
-    console.log(exercise);
     this.firestore.collection('exercises').add(exercise);
-}
+  }
 
 }

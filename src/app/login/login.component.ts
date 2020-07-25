@@ -14,6 +14,7 @@ import { RegisterComponent } from '../register/register.component';
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
+  hide = true;
   constructor(private loginService : LoginService, private dialog: MatDialog) { }
 
   ngOnInit() {

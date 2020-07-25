@@ -8,7 +8,7 @@ background-repeat: no-repeat;">
             <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
         </mat-form-field>
         <mat-form-field id="password" class="center">
-            <input matInput placeholder="Password" [(ngModel)]="password" [type]="hide ? 'text' : 'password' "
+            <input matInput placeholder="Password" [(ngModel)]="password" [type]="hide ? 'password' : 'text' "
                 name="password" required>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]=" 'Hide password'"
                 [attr.aria-pressed]="hide">

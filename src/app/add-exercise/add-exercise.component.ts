@@ -4,11 +4,10 @@ import { LoginService } from 'src/loginService/login.service';
 import { Router } from '@angular/router';
 import { User } from '../login/user';
 import * as firebase from 'firebase';
+import { exerciseTypes } from '../exerciseType';
+import { ToastrService } from 'ngx-toastr';
 
-interface Exercises {
-  value: string;
-  viewValue: string;
-}
+
 @Component({
   selector: 'app-add-exercise',
   templateUrl: './add-exercise.component.html',
@@ -18,8 +17,9 @@ export class AddExerciseComponent implements OnInit {
   user: firebase.User;
 
   description: string;
-  selectedType = "WIP"
-
+  exercises = exerciseTypes;
+  selectedType = exerciseTypes[1];
+  showSuccesMsg = false;
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -35,10 +35,10 @@ export class AddExerciseComponent implements OnInit {
     })
   }
 
-  logOut(){
-    firebase.auth().signOut().then(function() {
+  logOut() {
+    firebase.auth().signOut().then(function () {
       this.router.navigateByUrl('');
-    }).catch(function(error) {
+    }).catch(function (error) {
       // An error happened.
     });
   }
@@ -46,20 +46,22 @@ export class AddExerciseComponent implements OnInit {
   addExercise() {
 
     let exercise = {};
+    if(this.selectedType == undefined || this.description == undefined || this.user.displayName == undefined){
+      return;
+    }
     exercise['type'] = this.selectedType;
     exercise['description'] = this.description;
     exercise['user'] = this.user.displayName;
 
+    
     this.loginService.createExercise(exercise);
+    this.showSuccesMsg = true;
+    setTimeout(() => {
+      this.showSuccesMsg = false;
+    }, 1500);
   }
 
   cancel() {
     this.description = "";
   }
-
-  exercises: Exercises[] = [
-    { value: 'legs-0', viewValue: 'Legs' },
-    { value: 'chest-1', viewValue: 'Chest' },
-    { value: 'back-1', viewValue: 'Back' }
-  ];
 }
