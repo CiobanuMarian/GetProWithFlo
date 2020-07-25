@@ -1,23 +1,27 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-
-    <mat-card class="box">
-      <mat-card-header>
-        <mat-card-title>Log in</mat-card-title>
-      </mat-card-header>
-  
-      <form class="login-form">
-        <mat-card-content>
-          <mat-form-field >
-            <input matInput placeholder="Email"[(ngModel)]="email" name="email" required>
-          </mat-form-field>
-  
-          <mat-form-field id = "password">
-            <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
-          </mat-form-field>
-        </mat-card-content>
-        <button mat-stroked-button color="primary" class="btn-block" (click)="login() ">Log in</button>
-        <button mat-stroked-button color="primary" class="btn-block"  style="margin-top: 5px;"  (click)="openRegisterDialog()">Register</button>
-      </form>
-    </mat-card>
-  
-  </div>
+<div style="height: 100%; background-image: url(assets/gym_background.jpg); background-position: center;
+background-size: cover;
+background-repeat: no-repeat;">
+    <div mat-dialog-content>
+        <br/><br/><h1 style="text-align:center;
+    display: flex;
+    justify-content: center; ">Log in</h1><br/><br/>
+    <mat-form-field style="text-align:center;
+    display: flex;
+    justify-content: center;">
+        <input style="width: 200px;" matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+    </mat-form-field>
+    <br/>
+    <mat-form-field id = "password" style="text-align:center;
+    display: flex;
+    justify-content: center;">
+        <input matInput placeholder="Password" [(ngModel)]="password" [type]="hide ? 'password' : 'text' " name="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]=" 'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <br><br>
+    
+    </mat-form-field>
+    <button mat-raised-button class="btn-block" style="left: 50%; width: 100px;" mat-button (click)="login()">Log in</button><br/>
+    <button mat-raised-button class="btn-block" style="left: 50%; width: 100px" mat-button (click)="openRegisterDialog()">Register</button>
+    </div>
+</div>
