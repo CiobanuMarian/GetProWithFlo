@@ -22,6 +22,9 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestor
 import { DeleteExerciseComponent } from './delete-exercise/delete-exercise.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { EditExerciseComponent } from './edit-exercise/edit-exercise.component';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -30,7 +33,8 @@ const routes: Routes = [
   { path: 'add', component: AddExerciseComponent},
   { path: 'delete', component: DeleteExerciseComponent},
   { path: 'deleteC', component: ConfirmDialogComponent},
-  { path: 'edit', component: EditExerciseComponent}
+  { path: 'edit', component: EditExerciseComponent},
+  { path: 'editD', component: EditDialogComponent}
 ];
 @NgModule({
   declarations: [
@@ -42,6 +46,9 @@ const routes: Routes = [
     DeleteExerciseComponent,
     ConfirmDialogComponent,
     EditExerciseComponent,
+    EditDialogComponent,
+    FooterComponent,
+    HeaderComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

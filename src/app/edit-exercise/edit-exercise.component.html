@@ -36,8 +36,8 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div style="height: 88vh;">
-            <mat-card *ngFor="let item of exercise" class="card">
-                <div class="card-body">
+            <mat-card  *ngFor="let item of exercise" class="card">
+                <div class="card-body" (click)="openEditDialog(item)">
                     <div class="card-title">
                         Description: {{item.description}}
                     </div>

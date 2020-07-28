@@ -4,6 +4,7 @@ import { ExerciseService } from '../add-exercise/exercises.service';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/loginService/login.service';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-edit-exercise',
@@ -54,6 +55,17 @@ export class EditExerciseComponent implements OnInit {
       this.router.navigateByUrl('');
     }).catch(function (error) {
       // An error happened.
+    });
+  }
+
+  openEditDialog(exercise){
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: { description: exercise.description, type: exercise.type, user: exercise.user },
+      width: "260px"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 
