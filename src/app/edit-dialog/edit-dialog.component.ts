@@ -3,8 +3,9 @@ import { MatDialogRef } from '@angular/material';
 import { LoginService } from 'src/loginService/login.service';
 import { Router } from '@angular/router';
 import { exerciseTypes } from '../exerciseType';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ExerciseService } from '../add-exercise/exercises.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-edit-dialog',
@@ -17,12 +18,14 @@ export class EditDialogComponent implements OnInit {
   exercises = exerciseTypes;
   description: string;
   type: string;
+  id: string;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<EditDialogComponent>,
     private loginService: LoginService,
     private router: Router,
-    private exerciseService: ExerciseService
+    private exerciseService: ExerciseService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -33,20 +36,37 @@ export class EditDialogComponent implements OnInit {
         this.user = user;
       }
     })
-    this.description = this.data.description,
-    this.type = this.data.type,
-    console.log(this.description, this.type)
+    this.description = this.data.description;
+    this.type = this.data.type;
+    this.id = this.data.id;
+
   }
 
-  cancel(){
+  cancel() {
     this.dialogRef.close();
   }
 
-  editExercise(){
+  openSaveEditConfirmDialog() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '200px',
+      data: "Are you sure?"
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.editExercise();
+        this.cancel();
+      } else {
+        //Do nothing
+      }
+    });
+  }
+
+  editExercise() {
     let exercise = {};
     exercise['type'] = this.type;
     exercise['description'] = this.description;
     exercise['user'] = this.user.displayName;
+    exercise['id'] = this.id;
 
     this.exerciseService.updateExercise(exercise);
   }

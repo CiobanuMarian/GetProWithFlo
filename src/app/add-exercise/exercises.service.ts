@@ -28,7 +28,6 @@ export class ExerciseService {
     }
 
     updateExercise(exercise) {
-        delete exercise.id;
         this.firestore.doc('exercises/' + exercise.id).update(exercise);
     }
 

@@ -60,7 +60,7 @@ export class EditExerciseComponent implements OnInit {
 
   openEditDialog(exercise){
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: { description: exercise.description, type: exercise.type, user: exercise.user },
+      data: { description: exercise.description, type: exercise.type, id: exercise.id },
       width: "260px"
     });
 

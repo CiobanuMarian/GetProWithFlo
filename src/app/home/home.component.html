@@ -1,5 +1,4 @@
-<!-- <p>Welcome {{user?.displayName}}</p> -->
-
+<app-header></app-header>
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-icon-button>
@@ -47,15 +46,27 @@
         Welcome, please select what types of exercises would you like to have in your training
       </mat-card>
 
-      <label *ngFor="let exercise of exerciseTypes">
+      <label *ngFor="let exercise of exerciseType">
         <section>
-          <mat-checkbox labelPosition="before" color="primary" class="checkbox">{{exercise}}</mat-checkbox>
+          <mat-checkbox labelPosition="before" color="primary" class="checkbox" (change)="changeValue($event.checked,exercise)">{{exercise}}</mat-checkbox>
         </section>
       </label>
 
-      <button mat-fab color="primary" class="start_button">
+      <button mat-fab color="primary" class="start_button" (click)="addToTraining(2)">
         <mat-icon>play_arrow</mat-icon>
       </button>
+      <br><br>
+      <mat-card  *ngFor="let item of displayedExercises" class="card">
+        <div class="card-body">
+            <div class="card-title">
+                Description: {{item.description}}
+            </div>
+            <div class="card-subtitle">
+                Type: {{item.type}}
+            </div>
+        </div>
+    </mat-card>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
