@@ -35,13 +35,21 @@ export class DeleteExerciseComponent implements OnInit {
     this.exerciseService.getExercises().subscribe(data => {
       this.exercise = data.map(e => {
         return {
-          id:e.payload.doc.id,
-          description:e.payload.doc.data()['description'],
-          type:e.payload.doc.data()['type'],
-          user:e.payload.doc.data()['user'],
-          delete: false
+          id: e.payload.doc.id,
+          description: e.payload.doc.data()['description'],
+          type: e.payload.doc.data()['type'],
+          user: e.payload.doc.data()['user'],
         };
       })
+      console.log(this.exercise);
+      var ceva = [];
+      this.exercise.forEach(ex => {
+        // console.log(ex.user == this.user.displayName);
+        if (ex.user == this.user.displayName) {
+          ceva.push(ex);
+        }
+      })
+      this.exercise = ceva;
     })
   }
 

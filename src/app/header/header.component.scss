@@ -1,13 +1,8 @@
 .header {
-    position: absolute;
-    // text-align: right;
-    color: white;
-    margin-top: 7px;
-    // margin-right: 15px;
-    margin-left: 85%;
-    // width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 50px;
-    line-height: 60px; /* Vertically center the text there */
-    background-color: transparent;
+    top: 8px;
+    right: 20px;
+    bottom: auto;
+    left: auto;
+    position: fixed;
 }
+
